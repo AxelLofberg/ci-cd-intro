@@ -46,5 +46,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} #fixed?
-          publish_dir: C:\Users\axell\ci-cd-intro  # Kontrollera att rätt mapp används här
+          publish_dir: ./build  # Kontrollera att rätt mapp används här
+          force_orphan: true
 
