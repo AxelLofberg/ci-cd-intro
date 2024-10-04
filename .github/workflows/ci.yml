@@ -1,0 +1,38 @@
+name: CI Pipeline
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-lastest
+
+        steps:
+            #Steg 1: checka ut koden
+            - name: Check out code
+            uses: actions/checkout@v2
+
+        steps:
+            #Steg 2: Installera Phython
+            - name: Set up Python
+            uses: actions/setup-python@v2
+            with:
+                puthon-version: '3.x'
+
+        steps: 
+            #Steg 3: Installera dependencies
+            - name: Install Dependencies
+            run: |
+                pyhton -m pip install --upgrade pip
+                pip install -r requirements.txt
+
+        steps:
+            #Steg 4: Kör testerna
+            - name: Run Tests
+            run: |
+                pytest
